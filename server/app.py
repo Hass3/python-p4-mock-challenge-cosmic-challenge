@@ -4,6 +4,9 @@ from models import db, Scientist, Mission, Planet
 from flask_restful import Api, Resource
 from flask_migrate import Migrate
 from flask import Flask, make_response, jsonify, request
+from sqlalchemy.orm import configure_mappers
+configure_mappers()
+Mission.__mapper__.confirm_deleted_rows = False
 import os
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
